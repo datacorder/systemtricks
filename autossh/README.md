@@ -72,5 +72,5 @@ _**puerto_origen2**_ y _**puerto_destino2**_ permite hacer forward de más puert
 
 En /var/log/daemon.log se puede hacer debug de lo que ocurra.
 
-Si todo ha ido bien, en server_B deben aparecere los <puerto_destinoX> mediante un netstat (ej. netstat -antp|grep LISTEN)
+Si todo ha ido bien, en server_B deben aparecer los <puerto_destinoX> mediante un netstat (ej. netstat -antp|grep LISTEN)
 

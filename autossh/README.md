@@ -60,11 +60,11 @@ SSH_OPTIONS="-M 0 -N -p <puerto_ssh_destino> <usuario>@servidor_B -R localhost:<
 ```
 
 Explicación de los parámetros:
-- **usuario**: usuario creado para la generación de las claves
-- **puerto_origen1**: puerto del server_A al que queremos acceder desde el server_B
-- **puerto_destino1**: puerto en server_B a traves del cual accederemos al puerto_origen1 del server_A
+- _**usuario**_: usuario creado para la generación de las claves
+- _**puerto_origen1**_: puerto del server_A al que queremos acceder desde el server_B
+- _**puerto_destino1**_: puerto en server_B a traves del cual accederemos al puerto_origen del server_A
 
-<puerto_origen2> y <puerto_destino2> permite hacer forward de más puertos en una solo autossh. Se pueden incluir tantas líneas como se quieran. Yeah.
+_**puerto_origen2**_ y _**puerto_destino2**_ permite hacer forward de más puertos en una solo autossh. Se pueden incluir tantas líneas como se quieran. Yeah.
 
 ####Ejecucion
 - Refrescar la config del demonio: service autossh reload

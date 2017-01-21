@@ -14,18 +14,18 @@ server_B es una máquina accesible desde Internet a la que tenemos acceso, que u
 
 ####En server_A
 - Crear un usuario (ej. tunels)
-- Generar clave y privada y pública (ssh-keygen)
-- Copiar clave pública a server_B (scp ~/.ssh/id_rsa.pub usuario@servidor_B:)
+- Generar clave y privada y pública (_ssh-keygen_)
+- Copiar clave pública a server_B (_scp ~/.ssh/id_rsa.pub usuario@servidor_B:_)
 
 ####En server_B
-- Crear directorio ~/.ssh y darle permisos correctos (chmod 700 ~/.ssh)
-- Copiar clave pública del usuario de server_A (cat ~/id_rsa.pub >~/.ssh/authorized_keys)
+- Crear directorio ~/.ssh y darle permisos correctos (_chmod 700 ~/.ssh_)
+- Copiar clave pública del usuario de server_A (_cat ~/id_rsa.pub >~/.ssh/authorized_keys_)
 
 A partir de ahora el usuario puede autenticar desde server_A a server_B sin requerir contraseña.
 Antes de seguir, probar que efectivamente no se pide contraseña. Si no es así los siguientes pasos no funcionarán.
 
 ####En server_A
-- Instalar autossh (aptitude install autossh)
+- Instalar autossh (_aptitude install autossh_)
 - El fichero /etc/systemd/system/autossh.service debe contener lo siguiente:
 
 ```
@@ -67,10 +67,10 @@ Explicación de los parámetros:
 _**puerto_origen2**_ y _**puerto_destino2**_ permite hacer forward de más puertos en una solo autossh. Se pueden incluir tantas líneas como se quieran. Yeah.
 
 ####Ejecucion
-- Refrescar la config del demonio: service autossh reload
-- Iniciar tulen: service autossh start
+- Refrescar la config del demonio: _service autossh reload_
+- Iniciar tulen: _service autossh start_
 
-En /var/log/daemon.log se puede hacer debug de lo que ocurre
+En /var/log/daemon.log se puede hacer debug de lo que ocurra.
 
 Si todo ha ido bien, en server_B deben aparecere los <puerto_destinoX> mediante un netstat (ej. netstat -antp|grep LISTEN)
 

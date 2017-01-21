@@ -4,26 +4,27 @@
 
 Hacer fowarding de puertos entre servidores a través de túneles SSH permite solucionar de forma fácil y segura situaciones que de otra forma o no tienen solución o simplemente son imposibles. Por ejemplo problemas de acceso a servidores protegidos por ferreas políticas de filtrado perimetral, replicación en tiempo real de bases de datos, ejecución remota de entornos gráficos, y un largo etcétera de situaciones.
 
-La configuración mostrada está probad n Debian Jessie. Debería funcionar igual en Ubuntu y sistemas similares.
+La configuración mostrada está probada en Debian Jessie. Debería funcionar igual en Ubuntu y sistemas similares.
 
 Tenemos un escenario con dos máquinas: server_A y server_B.
 
-server_A es una máquina inaccesible desde Internet, a la que queremos acceder a alguno de sus servicios (ej. SSH o MySQL(.
+server_A es una máquina inaccesible desde Internet, a la que queremos acceder a alguno de sus servicios (ej. SSH o MySQL)
+.
 server_B es una máquina accesible desde Internet a la que tenemos acceso, que utilizaremos como máquina de salto hacia server_A.
 
-1. En server_A
+####En server_A
 - Crear un usuario (ej. tunels)
 - Generar clave y privada y pública (ssh-keygen)
 - Copiar clave pública a server_B (scp ~/.ssh/id_rsa.pub usuario@servidor_B:)
 
-2. En server_B
+####En server_B
 - Crear directorio ~/.ssh y darle permisos correctos (chmod 700 ~/.ssh)
 - Copiar clave pública del usuario de server_A (cat ~/id_rsa.pub >~/.ssh/authorized_keys)
 
 A partir de ahora el usuario puede autenticar desde server_A a server_B sin requerir contraseña.
 Antes de seguir, probar que efectivamente no se pide contraseña. Si no es así los siguientes pasos no funcionarán.
 
-3. En server_A
+####En server_A
 - Instalar autossh (aptitude install autossh)
 - El fichero /etc/systemd/system/autossh.service debe contener lo siguiente:
 
@@ -65,7 +66,7 @@ Explicación de los parámetros:
 
 <puerto_origen2> y <puerto_destino2> permite hacer forward de más puertos en una solo autossh. Se pueden incluir tantas líneas como se quieran. Yeah.
 
-4. Ejecucion
+####Ejecucion
 - Refrescar la config del demonio: service autossh reload
 - Iniciar tulen: service autossh start
 

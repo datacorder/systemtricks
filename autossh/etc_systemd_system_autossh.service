@@ -1,0 +1,15 @@
+[Unit]
+Description=AutoSSH para tuneles persistentes
+After=network.target
+
+[Service]
+Type=simple
+User=tunels
+EnvironmentFile=/etc/default/autossh
+ExecStart=
+ExecStart=/usr/bin/autossh $SSH_OPTIONS
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target

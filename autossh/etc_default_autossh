@@ -1,0 +1,8 @@
+AUTOSSH_USER=<usuario>
+AUTOSSH_POLL=60
+AUTOSSH_FIRST_POLL=30
+AUTOSSH_GATETIME=0
+AUTOSSH_PORT=40040
+SSH_OPTIONS="-M 0 -N -p <puerto_ssh_destino> <usuario>@servidor_B -R localhost:<puerto_destino1>:localhost:<puerto_origen1> \
+-R localhost:<puerto_destino2>:localhost:<puerto_origen2> \
+-i /home/<usuario>/.ssh/id_rsa"
